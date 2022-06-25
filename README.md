@@ -1,7 +1,6 @@
-<h1 align="center">Supp? 👋, I'm SurpriseMTFK</h1>
-<h3 align="center">Another Level Of Script Kiddies.</h3>
+<h1 align="center">sᴜᴘᴘ? 👋, ɪ'ᴍ SurpriseMTFK</h1>
+<h3 align="center">ᴀɴᴏᴛʜᴇʀ ʟᴇᴠᴇʟ ᴏғ sᴄʀɪᴘᴛ ᴋɪᴅᴅɪᴇs.</h3>
 
-<h3 align="left">Connect with me:</h3>
 <p align="left">
 </p>
 
