@@ -1,5 +1,5 @@
-<h1 align="center">sᴜᴘᴘ? 👋, ɪ'ᴍ 𝙎𝙪𝙧𝙥𝙧𝙞𝙨𝙚𝙈𝙏𝙁𝙆</h1>
-<h3 align="center">ᴀɴᴏᴛʜᴇʀ 𝙇𝙀𝙑𝙀𝙇 ᴏꜰ 𝙎𝘾𝙍𝙄𝙋𝙏 𝙆𝙄𝘿𝘿𝙄𝙀𝙎.</h3>
+<h1 align="center">sᴜᴘᴘ? 👋, ɪ'ᴍ ꜱᴜʀᴘʀɪꜱᴇᴍᴛꜰᴋ</h1>
+<h3 align="center">ᴀɴᴏᴛʜᴇʀ <bold>ʟᴇᴠᴇʟ</bold> ᴏꜰ ꜱᴄɪʀᴘᴛ ᴋɪᴅᴅɪᴇꜱ.</h3>
 
 <p align="left">
 </p>
