@@ -1,5 +1,5 @@
 <h1 align="center">sᴜᴘᴘ? 👋, ɪ'ᴍ ꜱᴜʀᴘʀɪꜱᴇᴍᴛꜰᴋ</h1>
-<h3 align="center">ᴀɴᴏᴛʜᴇʀ <bold>ʟᴇᴠᴇʟ</bold> ᴏꜰ ꜱᴄɪʀᴘᴛ ᴋɪᴅᴅɪᴇꜱ.</h3>
+<h3 align="center">ᴀɴᴏᴛʜᴇʀ ʟᴇᴠᴇʟ ᴏꜰ ꜱᴄɪʀᴘᴛ ᴋɪᴅᴅɪᴇꜱ.</h3>
 
 <p align="left">
 </p>
