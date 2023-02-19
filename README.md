@@ -3,6 +3,7 @@
 
 - 😎 ɪ’ᴍ ᴄᴜʀʀᴇɴᴛʟʏ ʟᴇᴀʀɴɪɴɢ ʜᴏᴡ ᴛᴏ **ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ꜱʟᴇᴇᴘɪɴɢ.**
 - ⚡ ᴡᴏʀᴋɪɴɢ ᴏɴ **ʙᴀᴄᴋᴅᴏᴏʀ & ᴍᴀʟɪᴄᴏᴜꜱ ᴀᴄᴛɪᴠɪᴛʏ.**
+<p align="center"> <img src="https://www.redhat.com/cms/managed-files/Brand_Standars-Red_Hat-_color_on-black.svg?itok=wPCF1-sX">
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=pari-malam&label=Profile%20views&color=0e75b6&style=flat" alt="pari-malam" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=pari-malam" alt="pari-malam" /></a> </p>
