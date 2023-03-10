@@ -2,7 +2,6 @@
 <h2 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ</h2>
 
 - 😎 ɪ’ᴍ ᴄᴜʀʀᴇɴᴛʟʏ ʟᴇᴀʀɴɪɴɢ ʜᴏᴡ ᴛᴏ **ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ꜱʟᴇᴇᴘɪɴɢ.**
-- ⚡ ᴍᴀᴋɪɴɢ ᴏɴ **ᴘᴇʀꜰᴇᴄᴛ ʙᴀᴄᴋᴅᴏᴏʀ & ᴍᴀʟɪᴄᴏᴜꜱ ᴀᴄᴛɪᴠɪᴛʏ** ᴛᴏ ᴍᴀᴋᴇ ᴛʜɪꜱ **ʟɪꜰᴇ** ᴍᴏʀᴇ **ᴍᴇᴀɴɪɴɢꜰᴜʟ.**
 <p align="center"> <img src="https://www.redhat.com/cms/managed-files/Brand_Standars-Red_Hat-_color_on-black.svg?itok=wPCF1-sX">
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=pari-malam&label=Profile%20views&color=0e75b6&style=flat" alt="pari-malam" /> </p>
 
