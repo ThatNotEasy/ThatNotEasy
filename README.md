@@ -1,3 +1,4 @@
+<p align="center"><img src="https://user-images.githubusercontent.com/25004320/228351428-f88b20d5-9866-4cfb-9e64-44b064246fc5.gif" alt="animated" /></p>
 <h1 align="center">Ssup? 🗿 </h1>
 <h2 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ</h2>
 
@@ -14,9 +15,6 @@
 
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=Pari-Malam&theme=discord&no-frame=false&no-bg=false&margin-w=4)
-
-### 😂 Random Dev Meme
-<img src="https://random-memer.herokuapp.com/" width="512px"/>
 
 ---
 [![](https://visitcount.itsvg.in/api?id=Pari-Malam&icon=1&color=4)](https://visitcount.itsvg.in)
