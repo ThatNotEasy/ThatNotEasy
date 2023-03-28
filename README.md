@@ -1,6 +1,5 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/25004320/228351428-f88b20d5-9866-4cfb-9e64-44b064246fc5.gif" alt="animated" /></p>
-<h1 align="center">Ssup? 🗿 </h1>
-<h2 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ</h2>
+<h1 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ 🗿 </h1>
 
 - 😎 ɪ’ᴍ ᴄᴜʀʀᴇɴᴛʟʏ ʟᴇᴀʀɴɪɴɢ ʜᴏᴡ ᴛᴏ **ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ꜱʟᴇᴇᴘɪɴɢ.**
 <p align="center"> <img src="https://www.redhat.com/cms/managed-files/Brand_Standars-Red_Hat-_color_on-black.svg?itok=wPCF1-sX">
