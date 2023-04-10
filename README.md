@@ -1,6 +1,6 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/25004320/228351428-f88b20d5-9866-4cfb-9e64-44b064246fc5.gif" alt="animated" /></p>
 <h1 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ 🗿 </h1>
-- 😎 ɪ’ᴍ ᴄᴜʀʀᴇɴᴛʟʏ "ʟᴇᴀʀɴɪɴɢ" ʜᴏᴡ ᴛᴏ "ᴇᴀʀɴ ᴍᴏɴᴇʏ" ʙʏ "ꜱʟᴇᴇᴘɪɴɢ".</p>
+- 😎 ɪ’ᴍ ᴄᴜʀʀᴇɴᴛʟʏ ʟᴇᴀʀɴɪɴɢ ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ꜱʟᴇᴇᴘɪɴɢ.</p>
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/25004320/228358872-7cf32aa7-c25e-4fcf-a0f3-a275ee2316f7.png"/> </p>
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=pari-malam&label=Profile%20views&color=0e75b6&style=flat" alt="pari-malam" /> </p>
