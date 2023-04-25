@@ -16,11 +16,6 @@
 
 [<img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/hr.gif"/>](https://github.com/Pari-Malam)
 
-<h1> <img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/connect.gif" width="70px" style="border-radius: 50%"> ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ </h1>
-
- [<img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/telegram_icon.png" width="60px">](https://t.me/its_star_boi) [<img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/github_icon.png" width="60px">](https://github.com/Pari-Malam)
-
-[<img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/hr.gif"/>](https://github.com/Pari-Malam)
 
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=Pari-Malam&theme=discord&no-frame=false&no-bg=false&margin-w=4)
