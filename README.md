@@ -17,6 +17,6 @@
 [<img src="https://github.com/Pari-Malam/Pari-Malam/blob/main/resources/hr.gif"/>](https://github.com/Pari-Malam)
 
 
-## 🏆 Kudap kudap
+## 🏆 Kudap Kudap
 ![](https://github-profile-trophy.vercel.app/?username=Pari-Malam&theme=discord&no-frame=false&no-bg=false&margin-w=4)
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
