@@ -1,5 +1,4 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/25004320/228351428-f88b20d5-9866-4cfb-9e64-44b064246fc5.gif" alt="animated" /></p>
-<h1 align="center">ꜰʀᴏᴍ ꜱᴋɪᴅᴅɪᴇꜱ ᴛᴏ ꜱᴋɪᴅᴅɪᴇꜱ 🗿 </h1>
 <div align="center">
   <img src="https://raw.githubusercontent.com/Pari-Malam/Pari-Malam/main/resources/github-header-image.png" alt="Header">
 </div>
