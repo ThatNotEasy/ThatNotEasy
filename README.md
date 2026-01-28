@@ -8,7 +8,7 @@
 
 ---
 
-Feel free to reach out if you want to collaborate, chat tech, or just say hi! 👋
+Reverse101 | Fullstack | CyberSec
 
 - 🧵 **Telegram**: [@SurprseMTFK](https://t.me/@SurprseMTFK)  
 - 💬 **Discord**: `kwafeltz`
