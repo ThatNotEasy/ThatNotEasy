@@ -1,4 +1,4 @@
-# VM Rust — Reverse Engineering Writeup
+# VM Rust 
 
 
 ## TL;DR

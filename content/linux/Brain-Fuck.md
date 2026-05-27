@@ -1,4 +1,4 @@
-# Brain-Fuck — Reverse Engineering Writeup
+# Brain-Fuck 
 
 ## TL;DR
 

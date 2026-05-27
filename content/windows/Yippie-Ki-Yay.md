@@ -1,4 +1,4 @@
-# Yippie Ki Yay — Reverse Engineering Writeup
+# Yippie Ki Yay 
 
 
 ## TL;DR

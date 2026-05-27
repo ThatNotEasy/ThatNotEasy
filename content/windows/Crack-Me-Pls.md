@@ -1,4 +1,4 @@
-# CrackMePls.exe — Reverse Engineering Writeup
+# CrackMePls.exe 
 
 ## TL;DR
 

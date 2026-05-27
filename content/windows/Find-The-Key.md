@@ -1,4 +1,4 @@
-# Find The Key (ActivateMe.exe) — Reverse Engineering Writeup
+# Find The Key (ActivateMe.exe) 
 
 ## TL;DR
 

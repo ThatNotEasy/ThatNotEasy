@@ -4,3 +4,4 @@ node_modules/
 content/rika/*
 content/game/*
 .claude
+.github

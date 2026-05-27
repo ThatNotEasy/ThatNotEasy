@@ -1,4 +1,4 @@
-# Almost Impossible — Reverse Engineering Writeup
+# Almost Impossible 
 
 ## TL;DR
 

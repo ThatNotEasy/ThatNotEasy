@@ -1,8 +1,21 @@
 (function() {
+    'use strict';
+
+    // Prevent browser from restoring scroll position on refresh
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
     const manifestUrl = 'manifest.json';
     const writeupList = document.getElementById('writeupList');
     const mainContent = document.getElementById('mainContent');
+    const searchInput = document.getElementById('sidebarSearch');
     let writeups = [];
+    let currentPath = '';
+
+    /* ═══════════════════════════════════════════
+       HELPERS
+       ═══════════════════════════════════════════ */
 
     function triggerMainContentEnter() {
         mainContent.classList.remove('content-mounted');
@@ -40,18 +53,18 @@
     const normalizeLanguage = value => {
         const language = String(value || 'text').trim().toLowerCase();
         const aliases = {
-            shell: 'bash',
-            sh: 'bash',
-            ps: 'powershell',
-            py: 'python',
-            js: 'javascript',
-            ts: 'typescript',
+            shell: 'bash', sh: 'bash', ps: 'powershell',
+            py: 'python', js: 'javascript', ts: 'typescript',
             asm: 'x86asm'
         };
         return (aliases[language] || language).replace(/[^a-z0-9_-]/g, '') || 'text';
     };
 
     const getHashPath = () => decodeURIComponent(window.location.hash.replace(/^#\/?/, ''));
+
+    /* ═══════════════════════════════════════════
+       MARKDOWN RENDERING
+       ═══════════════════════════════════════════ */
 
     function inlineMarkdown(text) {
         let html = escapeHtml(text);
@@ -80,7 +93,6 @@
 
     function highlightRenderedCode() {
         if (!window.hljs) return;
-
         document.querySelectorAll('pre code').forEach(block => {
             window.hljs.highlightElement(block);
         });
@@ -96,11 +108,9 @@
             const line = lines[i];
             const trimmed = line.trim();
 
-            if (!trimmed) {
-                i++;
-                continue;
-            }
+            if (!trimmed) { i++; continue; }
 
+            // Code blocks
             if (trimmed.startsWith('```')) {
                 const language = normalizeLanguage(trimmed.slice(3).trim());
                 const code = [];
@@ -115,7 +125,7 @@
                     <div class="code-block-wrapper">
                         <div class="code-label">
                             <span><span class="lang-tag">${escapeHtml(language)}</span> — snippet</span>
-                            <button class="copy-btn" data-copy-target="dynamic-code-${codeId}">📋 Copy</button>
+                            <button class="copy-btn" data-copy-target="dynamic-code-${codeId}">Copy</button>
                         </div>
                         <pre><code id="dynamic-code-${codeId}" class="language-${escapeHtml(language)}">${escapeHtml(code.join('\n'))}</code></pre>
                     </div>
@@ -123,6 +133,7 @@
                 continue;
             }
 
+            // Tables
             if (/^\|.+\|$/.test(trimmed) && lines[i + 1] && /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[i + 1].trim())) {
                 const tableLines = [line, lines[i + 1]];
                 i += 2;
@@ -134,6 +145,7 @@
                 continue;
             }
 
+            // Headings
             const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
             if (heading) {
                 const level = Math.min(heading[1].length + 1, 4);
@@ -143,12 +155,14 @@
                 continue;
             }
 
+            // Horizontal rule
             if (/^---+$/.test(trimmed)) {
                 blocks.push('<hr>');
                 i++;
                 continue;
             }
 
+            // Blockquotes
             if (/^>\s+/.test(trimmed)) {
                 const quote = [];
                 while (i < lines.length && /^>\s+/.test(lines[i].trim())) {
@@ -159,6 +173,7 @@
                 continue;
             }
 
+            // Unordered lists
             if (/^[-*]\s+/.test(trimmed)) {
                 const items = [];
                 while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) {
@@ -169,6 +184,7 @@
                 continue;
             }
 
+            // Ordered lists
             if (/^\d+\.\s+/.test(trimmed)) {
                 const items = [];
                 while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
@@ -179,6 +195,7 @@
                 continue;
             }
 
+            // Paragraphs
             const paragraph = [trimmed];
             i++;
             while (i < lines.length && lines[i].trim() && !/^(#{1,6})\s+/.test(lines[i].trim()) && !lines[i].trim().startsWith('```') && !/^[-*]\s+/.test(lines[i].trim()) && !/^\d+\.\s+/.test(lines[i].trim()) && !/^\|.+\|$/.test(lines[i].trim())) {
@@ -190,6 +207,10 @@
 
         return blocks.join('\n');
     }
+
+    /* ═══════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════ */
 
     const SIDEBAR_CATEGORIES = ['linux', 'windows'];
 
@@ -211,21 +232,20 @@
     function renderSidebar() {
         SIDEBAR_CATEGORIES.forEach(category => {
             const items = writeups.filter(w => w.category === category);
-            const root = document.getElementById('writeupList');
-            const itemEl = root.querySelector(`.toc-accordion-item[data-category="${category}"]`);
+            const itemEl = writeupList.querySelector(`.toc-accordion-item[data-category="${category}"]`);
             if (!itemEl) return;
 
             const linksUl = itemEl.querySelector('.toc-accordion-links');
             const countEl = itemEl.querySelector('.toc-trigger-count');
             if (countEl) {
-                countEl.textContent = String(items.length);
+                countEl.textContent = items.length > 0 ? String(items.length) : '0';
             }
 
             if (!linksUl) return;
 
             linksUl.innerHTML = items.length
                 ? items.map(writeupItem => `
-                    <li>
+                    <li data-search-text="${escapeHtml(writeupItem.title.toLowerCase())}">
                         <a href="#${encodeURIComponent(writeupItem.hash)}" class="toc-link writeup-link" data-path="${escapeHtml(writeupItem.hash)}">
                             ${escapeHtml(writeupItem.title)}
                         </a>
@@ -239,10 +259,8 @@
     function syncAccordionForPath(path) {
         const entry = writeups.find(w => w.hash === path);
         if (!entry) return;
-
         const itemEl = writeupList.querySelector(`.toc-accordion-item[data-category="${entry.category}"]`);
         if (!itemEl) return;
-
         itemEl.classList.add('is-open');
         const btn = itemEl.querySelector('.toc-accordion-trigger');
         if (btn) btn.setAttribute('aria-expanded', 'true');
@@ -259,37 +277,105 @@
         writeupList.addEventListener('click', event => {
             const trigger = event.target.closest('.toc-accordion-trigger');
             if (!trigger) return;
-
             event.preventDefault();
             const item = trigger.closest('.toc-accordion-item');
             if (!item) return;
-
             item.classList.toggle('is-open');
             const expanded = item.classList.contains('is-open');
             trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         });
     }
 
+    /* ═══════════════════════════════════════════
+       SEARCH / FILTER
+       ═══════════════════════════════════════════ */
+
+    function filterWriteups(query) {
+        const q = query.toLowerCase().trim();
+        const allItems = writeupList.querySelectorAll('.toc-accordion-links li[data-search-text]');
+
+        if (!q) {
+            // Show all
+            allItems.forEach(li => li.classList.remove('search-hidden'));
+            // Reset counts
+            SIDEBAR_CATEGORIES.forEach(category => {
+                const itemEl = writeupList.querySelector(`.toc-accordion-item[data-category="${category}"]`);
+                if (!itemEl) return;
+                const links = itemEl.querySelectorAll('.toc-accordion-links li[data-search-text]');
+                const countEl = itemEl.querySelector('.toc-trigger-count');
+                if (countEl) countEl.textContent = String(links.length);
+                // If no items at all, collapse; otherwise expand to show matches
+                if (links.length > 0) {
+                    itemEl.classList.add('is-open');
+                    const btn = itemEl.querySelector('.toc-accordion-trigger');
+                    if (btn) btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+            return;
+        }
+
+        SIDEBAR_CATEGORIES.forEach(category => {
+            const itemEl = writeupList.querySelector(`.toc-accordion-item[data-category="${category}"]`);
+            if (!itemEl) return;
+            const links = itemEl.querySelectorAll('.toc-accordion-links li[data-search-text]');
+            let visibleCount = 0;
+
+            links.forEach(li => {
+                const text = li.getAttribute('data-search-text') || '';
+                const matches = text.includes(q);
+                li.classList.toggle('search-hidden', !matches);
+                if (matches) visibleCount++;
+            });
+
+            const countEl = itemEl.querySelector('.toc-trigger-count');
+            if (countEl) countEl.textContent = String(visibleCount);
+
+            // Auto-expand categories with matches, collapse those without
+            if (visibleCount > 0) {
+                itemEl.classList.add('is-open');
+                const btn = itemEl.querySelector('.toc-accordion-trigger');
+                if (btn) btn.setAttribute('aria-expanded', 'true');
+            } else {
+                itemEl.classList.remove('is-open');
+                const btn = itemEl.querySelector('.toc-accordion-trigger');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    searchInput?.addEventListener('input', (e) => {
+        filterWriteups(e.target.value);
+    });
+
+    // Keyboard shortcut: Ctrl/Cmd+K to focus search
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            searchInput?.focus();
+        }
+    });
+
+    /* ═══════════════════════════════════════════
+       WRITEUP LOADING
+       ═══════════════════════════════════════════ */
+
     function renderLoading(item) {
+        const skeletonLines = Array(8).fill(0).map((_, i) =>
+            i === 0 ? '<h1 class="writeup-title-skeleton"></h1>' :
+            '<p class="writeup-text-skeleton"></p>'
+        ).join('');
+
         mainContent.innerHTML = `
             <header class="writeup-header">
                 <h1>${escapeHtml(item.title)}</h1>
-                <div class="re-info-strip" style="margin-top:0.5rem;">
-                    <div class="re-info-row">
-                        <span class="re-info-key">category</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">${escapeHtml(item.category)}</span>
-                    </div>
-                    <div class="re-info-row">
-                        <span class="re-info-key">source</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">${escapeHtml(item.file)}</span>
-                    </div>
+                <div class="writeup-meta">
+                    <span>${escapeHtml(item.category)}</span>
+                    <span>${escapeHtml(item.file)}</span>
                 </div>
             </header>
             <section class="section">
                 <div class="section-body">
-                    <p>Loading <code>${escapeHtml(item.path)}</code>…</p>
+                    <div class="loading-skeleton">${skeletonLines}</div>
                 </div>
             </section>
         `;
@@ -300,27 +386,9 @@
         return `
             <header class="writeup-header">
                 <h1>${inlineMarkdown(title)}</h1>
-                <div class="re-info-strip" style="margin-top:0.5rem;">
-                    <div class="re-info-row">
-                        <span class="re-info-key">category</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">${escapeHtml(item.category)}</span>
-                    </div>
-                    <div class="re-info-row">
-                        <span class="re-info-key">source</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">${escapeHtml(item.file)}</span>
-                    </div>
-                    <div class="re-info-row">
-                        <span class="re-info-key">path</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">content/${escapeHtml(item.category)}/${escapeHtml(item.file)}</span>
-                    </div>
-                    <div class="re-info-row">
-                        <span class="re-info-key">tags</span>
-                        <span class="re-info-sep">→</span>
-                        <span class="re-info-val">reverse-engineering · ${escapeHtml(item.category)} · writeup</span>
-                    </div>
+                <div class="writeup-meta">
+                    <span>${escapeHtml(item.category)}</span>
+                    <span>content/${escapeHtml(item.category)}/${escapeHtml(item.file)}</span>
                 </div>
             </header>
         `;
@@ -330,7 +398,12 @@
         const item = writeups.find(entry => entry.hash === path) || writeups[0];
         if (!item) return;
 
+        currentPath = item.hash;
         setActive(item.hash);
+
+        // Scroll to top immediately when switching writeups
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
         renderLoading(item);
 
         try {
@@ -352,6 +425,7 @@
             `;
             highlightRenderedCode();
             triggerMainContentEnter();
+
         } catch (error) {
             mainContent.innerHTML = `
                 <section class="section">
@@ -371,6 +445,59 @@
         }
     }
 
+    /* ═══════════════════════════════════════════
+       COPY BUTTON
+       ═══════════════════════════════════════════ */
+
+    document.addEventListener('click', event => {
+        const copyButton = event.target.closest('.copy-btn');
+        if (copyButton) {
+            const targetId = copyButton.getAttribute('data-copy-target');
+            const codeBlock = document.getElementById(targetId);
+            if (!codeBlock) return;
+
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy';
+                    copyButton.classList.remove('copied');
+                }, 1800);
+            }).catch(() => {
+                copyButton.textContent = 'Failed';
+                setTimeout(() => { copyButton.textContent = 'Copy'; }, 1500);
+            });
+        }
+    });
+
+    /* ═══════════════════════════════════════════
+       KEYBOARD NAVIGATION
+       ═══════════════════════════════════════════ */
+
+    document.addEventListener('keydown', (e) => {
+        // Alt+Arrow for prev/next writeup
+        if (e.altKey && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+            e.preventDefault();
+            const currentIndex = writeups.findIndex(w => w.hash === currentPath);
+            if (currentIndex === -1) return;
+
+            let nextIndex;
+            if (e.key === 'ArrowDown') {
+                nextIndex = Math.min(currentIndex + 1, writeups.length - 1);
+            } else {
+                nextIndex = Math.max(currentIndex - 1, 0);
+            }
+
+            if (nextIndex !== currentIndex) {
+                window.location.hash = encodeURIComponent(writeups[nextIndex].hash);
+            }
+        }
+    });
+
+    /* ═══════════════════════════════════════════
+       INIT
+       ═══════════════════════════════════════════ */
+
     async function init() {
         try {
             const response = await fetch(manifestUrl);
@@ -383,6 +510,9 @@
 
             const hashPath = getHashPath();
             await loadWriteup(hashPath || (writeups[0] && writeups[0].hash));
+
+            // Ensure page starts at top after initial load
+            window.scrollTo({ top: 0, behavior: 'instant' });
         } catch (error) {
             writeupList.innerHTML = '<li class="toc-manifest-error">Unable to load manifest.</li>';
             mainContent.innerHTML = `
@@ -399,27 +529,6 @@
             triggerMainContentEnter();
         }
     }
-
-    document.addEventListener('click', event => {
-        const copyButton = event.target.closest('.copy-btn');
-        if (copyButton) {
-            const targetId = copyButton.getAttribute('data-copy-target');
-            const codeBlock = document.getElementById(targetId);
-            if (!codeBlock) return;
-
-            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-                copyButton.textContent = '✓ Copied!';
-                copyButton.classList.add('copied');
-                setTimeout(() => {
-                    copyButton.textContent = '📋 Copy';
-                    copyButton.classList.remove('copied');
-                }, 1800);
-            }).catch(() => {
-                copyButton.textContent = '❌ Failed';
-                setTimeout(() => { copyButton.textContent = '📋 Copy'; }, 1500);
-            });
-        }
-    });
 
     window.addEventListener('hashchange', () => loadWriteup(getHashPath()));
     init();

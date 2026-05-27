@@ -1,4 +1,4 @@
-# TenzoCrackme — Reverse Engineering Writeup
+# TenzoCrackme 
 
 
 ## TL;DR

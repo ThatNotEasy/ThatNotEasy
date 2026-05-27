@@ -1,4 +1,4 @@
-# MCM v7.0 — Reverse Engineering Writeup
+# MCM v7.0 
 
 
 ## TL;DR

@@ -1,4 +1,4 @@
-# KeygenMe_3_SWD — Reverse Engineering Writeup
+# KeygenMe_3_SWD 
 
 ## TL;DR
 

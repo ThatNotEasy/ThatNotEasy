@@ -1,4 +1,4 @@
-# DebugMe — Reverse Engineering Writeup
+# DebugMe 
 
 ## TL;DR
 

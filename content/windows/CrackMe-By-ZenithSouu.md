@@ -1,4 +1,4 @@
-# OMEGA CrackMe — Reverse Engineering Writeup
+# OMEGA CrackMe 
 
 ## TL;DR
 

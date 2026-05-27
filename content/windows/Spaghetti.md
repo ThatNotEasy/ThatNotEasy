@@ -1,4 +1,4 @@
-# Spaghetti CrackMe — Reverse Engineering Writeup
+# Spaghetti CrackMe 
 
 
 ## TL;DR

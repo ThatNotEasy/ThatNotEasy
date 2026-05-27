@@ -4,105 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <meta name="theme-color" content="#0a0c0f">
+    <meta name="theme-color" content="#040404">
     <meta name="application-name" content="Ap0dexMe0">
 
-    <title>Ap0dexMe0</title>
-    <meta name="description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked Ghidra-first, evidence-driven.">
+    <title>Ap0dexMe0 — RE Writeups</title>
+    <meta name="description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked — Ghidra-first, evidence-driven.">
     <meta name="author" content="0x4D">
     <meta name="keywords" content="reverse engineering, writeups, Ghidra, crackme, keygen, malware analysis, binary analysis">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ap0dexMe0">
-    <meta property="og:title" content="Ap0dexMe0 Home">
-    <meta property="og:description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked Ghidra-first, evidence-driven.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ap0dexMe0 Home">
-    <meta name="twitter:description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked Ghidra-first, evidence-driven.">
+    <meta property="og:title" content="Ap0dexMe0 — s">
+    <meta property="og:description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked — Ghidra-first, evidence-driven.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ap0dexMe0 — RE Writeups">
+    <meta name="twitter:description" content="RE notes: Where pseudocode meets truth, and keys live in the disassembly. Crackmes cracked, binaries unpacked — Ghidra-first, evidence-driven.">
 
     <link rel="icon" href="static/svg/logo.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="static/svg/logo.svg">
+    <link rel="canonical" href="https://ap0dex.cyberbear.io/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/tailwind.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css?v=4">
 </head>
-<body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans antialiased flex flex-col">
+<body>
 
-    <nav class="navbar sticky top-0 z-[100] flex h-[52px] items-center justify-between border-b border-[var(--border)] bg-[rgba(10,12,15,0.8)] px-6 backdrop-blur-xl backdrop-saturate-150">
-        <a href="index.html" class="logo"><span class="bracket">[</span>Ap0dexMe0<span class="bracket">]</span></a>
+    <!-- ══════════════════════════════════════════════════════════
+         NAVBAR
+    ══════════════════════════════════════════════════════════ -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" aria-label="Ap0dexMe0 Home">
+            <span class="logo-icon" aria-hidden="true">⬡</span>
+            <span class="logo-text"><span class="bracket">[</span>Ap0dexMe0<span class="bracket">]</span></span>
+        </a>
+
+        <!-- Desktop Nav -->
         <ul class="nav-links">
             <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-            <li><a href="content.html">Touch Me</a></li>
+            <li><a href="content.html">Writeups</a></li>
+            <li><a href="https://github.com/Ap0dexMe0" target="_blank" rel="noopener noreferrer" class="nav-github">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span class="sr-only">GitHub</span>
+            </a></li>
         </ul>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="content.html">Writeups</a></li>
+            <li><a href="https://github.com/Ap0dexMe0" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        </ul>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════════════════════════ -->
     <div class="home-shell">
         <main class="home-main">
 
-            <!-- ── Kicker ── -->
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Actively researching</span>
+            </div>
+
+            <!-- Kicker -->
             <p class="home-kicker">
-                <span>RE writeups</span>
-                <span class="home-kicker-sep" aria-hidden="true">·</span>
-                <span>Ghidra-first, evidence-driven</span>
+                <span>Reverse Engineering</span>
+                <span class="home-kicker-sep" aria-hidden="true">/</span>
+                <span>Binary Analysis</span>
+                <span class="home-kicker-sep" aria-hidden="true">/</span>
+                <span>Crackmes</span>
             </p>
 
-            <!-- ── Hero title ── -->
+            <!-- Hero Title -->
             <h1 class="home-title">
-                Keys live in the bytes
-                <span class="home-title-sub">Evidence before conjecture every jump, check, and key mapped where they live in the disassembly.</span>
+                <span class="title-gradient">Keys live in the bytes</span>
+                <span class="home-title-sub">Evidence before conjecture — every jump, check, and key mapped where they live in the disassembly.</span>
             </h1>
 
-            <!-- ── Key: value info strip ── -->
-            <div class="re-info-strip">
-                <div class="re-info-row">
-                    <span class="re-info-key">approach</span>
-                    <span class="re-info-sep">→</span>
-                    <span class="re-info-val">Disassembly first, pseudocode only when it clarifies</span>
+            <!-- CTA Buttons -->
+            <div class="home-cta-group">
+                <a href="content.html" class="btn-primary">
+                    <span>Explore Writeups</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://github.com/Ap0dexMe0" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+
+            <!-- Disassembly Terminal -->
+            <div class="home-terminal re-disasm" aria-label="Disassembly snippet">
+                <div class="home-terminal-bar">
+                    <div class="terminal-dots">
+                        <span class="home-terminal-dot" aria-hidden="true"></span>
+                        <span class="home-terminal-dot" aria-hidden="true"></span>
+                        <span class="home-terminal-dot" aria-hidden="true"></span>
+                    </div>
+                    <span class="terminal-title">validation_check @ 0x00401000</span>
+                    <button class="terminal-copy-btn" data-copy="terminal-code" aria-label="Copy code">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    </button>
                 </div>
-                <div class="re-info-row">
-                    <span class="re-info-key">scope</span>
-                    <span class="re-info-sep">→</span>
-                    <span class="re-info-val">ELF &middot; PE &middot; crackmes &middot; unpacks &middot; keygens</span>
+                <pre class="home-terminal-body" id="terminal-code"><span class="re-addr">0x00401000</span>  <span class="re-mnem">push</span>   <span class="re-op-hi">ebp</span>                      <span class="re-cmnt">; prologue</span>
+<span class="re-addr">0x00401001</span>  <span class="re-mnem">mov</span>    <span class="re-op-hi">ebp</span>, <span class="re-op">esp</span>
+<span class="re-addr">0x00401003</span>  <span class="re-mnem">sub</span>    <span class="re-op">esp</span>, <span class="re-op-hi">0x40</span>                <span class="re-cmnt">; local buffer</span>
+<span class="re-addr">0x00401006</span>  <span class="re-mnem">xor</span>    <span class="re-op-hi">eax</span>, <span class="re-op">eax</span>
+<span class="re-addr">0x00401008</span>  <span class="re-label">loc_check:</span>
+<span class="re-addr">0x00401008</span>  <span class="re-mnem">cmp</span>    <span class="re-op">dword [ebp-4]</span>, <span class="re-op-hi">0xDEAD</span>  <span class="re-cmnt">; key validation</span>
+<span class="re-addr">0x0040100F</span>  <span class="re-mnem">jnz</span>    <span class="re-op-hi">loc_fail</span>                  <span class="re-cmnt">; → bad boy</span>
+<span class="re-addr">0x00401011</span>  <span class="re-mnem">lea</span>    <span class="re-op">eax</span>, <span class="re-op-hi">[msg_success]</span>        <span class="re-cmnt">; → "Unlocked"</span>
+<span class="re-addr">0x00401017</span>  <span class="re-mnem">call</span>   <span class="re-op-hi">puts</span></pre>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">🐧</span>
+                    <div class="stat-content">
+                        <span class="stat-number" data-count="linux">3</span>
+                        <span class="stat-label">Linux</span>
+                    </div>
                 </div>
-                <div class="re-info-row">
-                    <span class="re-info-key">format</span>
-                    <span class="re-info-sep">→</span>
-                    <span class="re-info-val">Manifest → Markdown → stable deep links</span>
+                <div class="stat-card">
+                    <span class="stat-icon">🖥️</span>
+                    <div class="stat-content">
+                        <span class="stat-number" data-count="windows">11</span>
+                        <span class="stat-label">Windows</span>
+                    </div>
                 </div>
-                <div class="re-info-row">
-                    <span class="re-info-key">rule</span>
-                    <span class="re-info-sep">→</span>
-                    <span class="re-info-val">No real product circumvention, no uncontrolled malware<span class="re-cursor"></span></span>
+                <div class="stat-card">
+                    <span class="stat-icon">📝</span>
+                    <div class="stat-content">
+                        <span class="stat-number" data-count="total">14</span>
+                        <span class="stat-label">Total Writeups</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- ── Disassembly strip ── -->
-            <div class="home-terminal re-disasm" aria-label="Disassembly snippet">
-                <div class="home-terminal-bar">
-                    <span class="home-terminal-dot" aria-hidden="true"></span>
-                    <span class="home-terminal-dot" aria-hidden="true"></span>
-                    <span class="home-terminal-dot" aria-hidden="true"></span>
-                    <span>disasm hero routine</span>
-                </div>
-                <pre class="home-terminal-body"><span class="re-addr">0x00401000</span>  <span class="re-mnem">push</span>   <span class="re-op-hi">ebp</span>                      <span class="re-cmnt">; entry standard prologue</span>
-<span class="re-addr">0x00401001</span>  <span class="re-mnem">mov</span>    <span class="re-op-hi">ebp</span>, <span class="re-op">esp</span>
-<span class="re-addr">0x00401003</span>  <span class="re-mnem">sub</span>    <span class="re-op">esp</span>, <span class="re-op-hi">0x40</span>                <span class="re-cmnt">; local buffer allocated</span>
-<span class="re-addr">0x00401006</span>  <span class="re-mnem">xor</span>    <span class="re-op-hi">eax</span>, <span class="re-op">eax</span>
-<span class="re-addr">0x00401008</span>  <span class="re-label">loc_1008:</span>
-<span class="re-addr">0x00401008</span>  <span class="re-mnem">cmp</span>    <span class="re-op">dword [ebp-4]</span>, <span class="re-op-hi">0xDEAD</span>  <span class="re-cmnt">; the check we care about</span>
-<span class="re-addr">0x0040100F</span>  <span class="re-mnem">jnz</span>    <span class="re-op-hi">loc_1042</span>                  <span class="re-cmnt">; wrong key → fail path</span>
-<span class="re-addr">0x00401011</span>  <span class="re-mnem">lea</span>    <span class="re-op">eax</span>, <span class="re-op-hi">[msg_ok]</span>              <span class="re-cmnt">; → "Validation located."</span>
-<span class="re-addr">0x00401017</span>  <span class="re-mnem">call</span>   <span class="re-op-hi">puts</span></pre>
-            </div>
         </main>
     </div>
 
-    <footer class="home-footer mt-auto">
-        Ap0dexMe0 · 0x4D<br>// live between memory states from · skiddies to 1337 \\
+    <!-- ══════════════════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">[Ap0dexMe0]</span>
+                <span class="footer-tagline">// reversing one byte at a time</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/Ap0dexMe0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 0x4D</span>
+            <span class="footer-sep">·</span>
+            <span>Built with obsession</span>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isOpen);
+            menuToggle.classList.toggle('is-open');
+            mobileMenu.classList.toggle('is-open');
+            mobileMenu.setAttribute('aria-hidden', isOpen);
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Terminal copy button
+        document.querySelectorAll('.terminal-copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.copy;
+                const code = document.getElementById(targetId)?.innerText;
+                if (code) {
+                    navigator.clipboard.writeText(code).then(() => {
+                        btn.classList.add('copied');
+                        setTimeout(() => btn.classList.remove('copied'), 1500);
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll with IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.stat-card').forEach(card => observer.observe(card));
+
+        // Smooth navbar background on scroll
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > 10) {
+                navbar.style.borderBottomColor = 'rgba(192, 192, 192, 0.12)';
+            } else {
+                navbar.style.borderBottomColor = 'rgba(192, 192, 192, 0.1)';
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+    </script>
 </body>
 </html>
